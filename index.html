@@ -178,6 +178,29 @@
     margin-bottom: 22px;
   }
 
+  .hero-title-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(10px);
+    animation: heroTextReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-title-line:nth-child(1) { animation-delay: 0.12s; }
+  .hero-title-line:nth-child(2) { animation-delay: 0.34s; }
+
+  .hero-title-line .soft {
+    color: rgba(245,246,251,0.78);
+  }
+
+  @keyframes heroTextReveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
   .hero p {
     max-width: 780px;
     margin: 0 auto;
@@ -197,6 +220,15 @@
   }
 
   .hero-meta strong { color: #aeb2ff; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title-line {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      animation: none;
+    }
+  }
 
   .hero-actions {
     margin-top: 34px;
@@ -519,6 +551,14 @@
 
   @media (max-width: 640px) {
     .container { width: min(calc(100% - 24px), var(--max)); }
+    .hero h1 {
+      font-size: clamp(2.35rem, 11vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+    .hero-title-line {
+      transform: translateY(24px);
+    }
     .btn { width: 100%; }
     .hero-actions { align-items: stretch; }
     .floating-cta {
@@ -554,7 +594,10 @@
   <section class="hero">
     <div class="container reveal visible">
       <div class="eyebrow">북마클릿 기반 · 교회 웹사이트 진단 · 무료 MVP</div>
-      <h1>우리교회 SEO · GEO · AEO · A11y,<br>한 번에 점검</h1>
+      <h1>
+        <span class="hero-title-line">우리교회 홈페이지,</span>
+        <span class="hero-title-line"><span class="soft">검색과 AI가</span> 제대로 읽고 있을까요?</span>
+      </h1>
       <p>온맘 디지털선교 분석기는 교회 홈페이지를 열어둔 상태에서 북마클릿 한 번만 클릭하면, 검색 노출부터 AI 인용 가능성, 답변형 구조, 웹 접근성까지 교회 맞춤 기준으로 즉시 진단합니다.</p>
       <div class="hero-meta">
         <span>Created for <strong>Church Digital Mission</strong></span>
